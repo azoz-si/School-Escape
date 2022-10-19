@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Vision : MonoBehaviour
+public class Vision2 : MonoBehaviour
 {
    [SerializeField] private LayerMask obs;
     private float timer=3;

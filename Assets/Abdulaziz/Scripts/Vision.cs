@@ -13,13 +13,14 @@ public class Vision : MonoBehaviour
     //Start is called before the first frame update
     private void Start()
     {
-        Ai = GetComponent<EnemyAi>();
+       // Ai = GetComponent<EnemyAi>();
     }
     private void OnTriggerStay(Collider other)
     {
-        
+      
         if (other.gameObject.tag == "Player") 
         {
+          
             Debug.Log("Trigger");
             Vector3 DirictionTarget = (other.gameObject.transform.position - transform.position).normalized;
             float distance = Vector3.Distance(transform.position, other.gameObject.transform.position);
@@ -29,6 +30,7 @@ public class Vision : MonoBehaviour
             //check what infront of us
             if (Physics.Raycast(ray, out hit))
             {
+                Debug.Log("hit");
                 Debug.DrawLine(transform.position, hit.point, Color.red);
 
                 // if it was the player 
