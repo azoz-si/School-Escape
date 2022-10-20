@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] NavMeshAgent enemyAgent;
+    [SerializeField]public NavMeshAgent enemyAgent;
     [SerializeField] EnemyAi enemyAi;
     public bool Arrived;
 

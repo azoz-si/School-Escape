@@ -7,7 +7,7 @@ public class EnemyAi : MonoBehaviour
 {
     public Transform target;
    public Transform Staringtarget;
-    [SerializeField] EnemyMovement enemyMovement;
+    [SerializeField]public EnemyMovement enemyMovement;
 
     [SerializeField] float LookingAroundSpeed = 40;
   public  enum EnemyState

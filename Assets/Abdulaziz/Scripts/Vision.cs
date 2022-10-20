@@ -10,6 +10,8 @@ public class Vision : MonoBehaviour
     private float timer=3;
     [SerializeField] EnemyAi Ai;
     bool looking = false;
+    [SerializeField] private GameObject exclamationSprite;
+
     //Start is called before the first frame update
     private void Start()
     {
@@ -36,17 +38,20 @@ public class Vision : MonoBehaviour
                 // if it was the player 
                 if (hit.transform.CompareTag("Player")) 
                 {
+                    Debug.Log(hit.transform.name) ;
                     //then do this
+                    exclamationSprite.active = true;
                     Debug.Log("i see you");
                     looking = true;
                     Ai.Staringtarget = other.transform;
                     Ai.StaringState();
                     //
                     timer -= 1* Time.deltaTime;
-
+                   // Ai.enemyMovement.enemyAgent.speed = 0;
                     //if teacher look to the player for 3 seconds the teacher will return the player to the class
                     if (timer <= 0) 
                     {
+                        //Ai.enemyMovement.enemyAgent.speed = 2;
                         Debug.Log("You dead");
                         Ai.target = other.transform;
                         other.GetComponent<NavMeshAgent>().SetDestination(other.transform.position);
@@ -59,7 +64,8 @@ public class Vision : MonoBehaviour
                 // if what we hit was not the player then
                 else
                 {
-
+                   Ai.enemyMovement.enemyAgent.speed = 2;
+                    exclamationSprite.active = false;
                     if (!(timer <= 0))
                     {
                         timer = 3;
@@ -85,5 +91,9 @@ public class Vision : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+      
     }
 }
