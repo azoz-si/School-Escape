@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Maha/Scenes/home.unity
+    guid: 7bfc90c22b3e20747b3e92bc0fd189d2
+  - enabled: 1
+    path: Assets/Maha/Scenes/main1.unity
+    guid: 27906c107683c4e46baa313560139a2d
   m_configObjects: {}
