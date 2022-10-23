@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Maha/Scenes/main1.unity
     guid: 27906c107683c4e46baa313560139a2d
+  - enabled: 1
+    path: Assets/Maha/Scenes/End.unity
+    guid: 5a7d1f74e4ac26f48a62f426b6b91db9
+  - enabled: 1
+    path: Assets/Maha/Scenes/endLose.unity
+    guid: c22fd60ffbf0c364a9c41c4f29f3fdb1
   m_configObjects: {}

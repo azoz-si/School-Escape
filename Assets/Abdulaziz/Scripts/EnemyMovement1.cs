@@ -28,8 +28,10 @@ public class EnemyMovement1 : MonoBehaviour
       //  print($"the Distance = {Distance},  and the destination = {enemyAgent.destination}");
         if(Distance < 2 && !Arrived)
         {
+            enemyAi.soud.TeatcherStop();
             Arrived = true;
             enemyAi.StateToLookAround();
         }
+        if (!Arrived) { enemyAi.soud.TeacherWallkSound(); }
     }
 }

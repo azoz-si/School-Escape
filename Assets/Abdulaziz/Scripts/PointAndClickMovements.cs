@@ -9,6 +9,12 @@ public class PointAndClickMovements : MonoBehaviour
 
     [Header("References")]
     [SerializeField] NavMeshAgent playerAgent;
+    [SerializeField] private Animator anim;
+    float Distance=1;
+    float distance2 = 1;
+    Vector3 hitpoint;
+    public bool Arrived;
+    [SerializeField] private SoundManger sound;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +24,25 @@ public class PointAndClickMovements : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      
         Movements();
+        
+
+    }
+    private void LateUpdate()
+    {
+        distance2 = CheckDistance(this.transform.position, hitpoint);
+
+        if (distance2 < 1 && !Arrived)
+        {
+            sound.playerStop();
+           
+                 
+            anim.SetBool("Walk", false);
+            Arrived = true;
+        }
+        if (!Arrived) { sound.PlayerWallkSound(); }
+        
     }
 
     private void Movements()
@@ -30,12 +54,20 @@ public class PointAndClickMovements : MonoBehaviour
             RaycastHit hit;
             if(Physics.Raycast(ray,out hit))
             {
-                float Distance = CheckDistance(this.transform.position,hit.point);
-
-                if(Distance > 1)
+                
+             Distance = CheckDistance(this.transform.position,hit.point);
+                Debug.Log("dest is : "+Distance);
+                if (Distance > 1)
                 {
+                    hitpoint = hit.point;
+                    anim.SetBool("Walk", true);
                     playerAgent.SetDestination(hit.point);
-                }
+                    Arrived=false;
+                   
+
+}
+             
+                
             }
         }
     }

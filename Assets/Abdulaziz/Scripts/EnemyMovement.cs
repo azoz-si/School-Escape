@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]public NavMeshAgent enemyAgent;
     [SerializeField] EnemyAi enemyAi;
     public bool Arrived;
-
+    
     private void Start()
     {
         enemyAgent = GetComponent<NavMeshAgent>();
@@ -25,11 +25,17 @@ public class EnemyMovement : MonoBehaviour
     {
         float Distance = Vector3.Distance(transform.position,enemyAgent.destination);
 
-      //  print($"the Distance = {Distance},  and the destination = {enemyAgent.destination}");
-        if(Distance < 2 && !Arrived)
+        //  print($"the Distance = {Distance},  and the destination = {enemyAgent.destination}");
+        if (Distance < 2 && !Arrived)
         {
+            enemyAi.sound.TeatcherStop();
+            enemyAi.anim.SetBool("walking", false);
             Arrived = true;
             enemyAi.StateToLookAround();
+        }
+        if (!Arrived) 
+        {
+            enemyAi.sound.TeacherWallkSound();
         }
     }
 }

@@ -8,8 +8,9 @@ public class EnemyAi1 : MonoBehaviour
     public Transform target;
    public Transform Staringtarget;
     [SerializeField] EnemyMovement1 enemyMovement;
-
+    [SerializeField] private Animator anim;
     [SerializeField] float LookingAroundSpeed = 40;
+    public SoundManger soud;
   public  enum EnemyState
     {
        
@@ -85,6 +86,8 @@ public class EnemyAi1 : MonoBehaviour
         if (!GoingToTarget)
         {
             GoingToTarget = true;
+            
+            anim.SetBool("walking", true);
             enemyMovement.SetDestination(target.position);
         }
     }
@@ -94,6 +97,7 @@ public class EnemyAi1 : MonoBehaviour
         if (!isStaring)
         {
             isStaring = true;
+           
             transform.LookAt(Staringtarget);
         }
     }

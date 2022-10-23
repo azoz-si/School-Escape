@@ -8,8 +8,9 @@ public class EnemyAi : MonoBehaviour
     public Transform target;
    public Transform Staringtarget;
     [SerializeField]public EnemyMovement enemyMovement;
-
+    public Animator anim;
     [SerializeField] float LookingAroundSpeed = 40;
+    public SoundManger sound;
   public  enum EnemyState
     {
        
@@ -45,6 +46,7 @@ public class EnemyAi : MonoBehaviour
     void Start()
     {
         enemyMovement = GetComponent<EnemyMovement>();
+      
     }
 
     public void StaringState()
@@ -84,6 +86,8 @@ public class EnemyAi : MonoBehaviour
         if (!GoingToTarget)
         {
             GoingToTarget = true;
+            anim.SetBool("walking", true);
+          //  sound.TeacherWallkSound();
             enemyMovement.SetDestination(target.position);
         }
     }
@@ -132,6 +136,8 @@ public class EnemyAi : MonoBehaviour
 
                     break;
             }
+            anim.SetBool("walking",true);
+           // sound.TeacherWallkSound();
             enemyMovement.SetDestination(targetPlace);
 
         }
@@ -149,13 +155,14 @@ public class EnemyAi : MonoBehaviour
 
     public void StateToLookAround()
     {
+     
         enemyState = EnemyState.LookAround;
         Wandring = false;
     }
 
     IEnumerator GoLookAround()
     {
-        
+        anim.SetBool("walking", false);
         {
             LookingAround = true;
             float currentRotation = transform.rotation.eulerAngles.y;

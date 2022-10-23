@@ -90,7 +90,7 @@ public class Vision1 : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(3);
         }
     }
     private void OnTriggerExit(Collider other)
